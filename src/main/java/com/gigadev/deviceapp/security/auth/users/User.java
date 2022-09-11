@@ -24,6 +24,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import com.gigadev.deviceapp.security.auth.devices.Device;
 import com.gigadev.deviceapp.security.auth.devices.DeviceDto;
 import com.gigadev.deviceapp.security.auth.devices.DeviceStatus;
+import com.gigadev.deviceapp.security.auth.roles.ERole;
 import com.gigadev.deviceapp.security.auth.roles.Role;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -65,7 +66,7 @@ public class User {
 	// il table user_roles deve contenere i dati associati di user_id e role_id
 	@JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private Set<Role> roles = new HashSet<Role>();
-
+	
 	public User(@NotBlank @Size(max = 20) String username, @Size(max = 30) String fullName,
 			@NotBlank @Size(max = 120) String password) {
 		super();
