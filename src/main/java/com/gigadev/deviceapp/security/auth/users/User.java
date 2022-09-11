@@ -17,13 +17,19 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+
 import com.gigadev.deviceapp.security.auth.devices.Device;
 import com.gigadev.deviceapp.security.auth.devices.DeviceDto;
+import com.gigadev.deviceapp.security.auth.devices.DeviceStatus;
 import com.gigadev.deviceapp.security.auth.roles.Role;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @Entity
 @Table(name = "users")
@@ -31,6 +37,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@Slf4j
 public class User {
 
 	@Id
@@ -50,7 +57,7 @@ public class User {
 	
 	// i device salvati nella collection dell'utente verranno salvati a loro volta (PERSIST) 
 	// nella colonna user_id del table devices (@JoinColumn)
-	@OneToMany(cascade = CascadeType.PERSIST)
+	@OneToMany
 	@JoinColumn(name = "user_id")
 	private List<Device> devices = new ArrayList<>();
 
@@ -67,12 +74,9 @@ public class User {
 		this.password = password;
 	}	
 	
-	public void addDevice(Device device) {
-		devices.add(device);
-	}
-	
 	public void addRole(Role role) {
 		roles.add(role);
 	}
-
+	
+	
 }

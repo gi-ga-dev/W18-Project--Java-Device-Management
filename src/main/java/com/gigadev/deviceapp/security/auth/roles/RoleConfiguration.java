@@ -18,5 +18,10 @@ public class RoleConfiguration {
 	public Role newEmployee() {
 		return new Role(ERole.ROLE_EMPLOYEE);
 	}
+	
+	@Bean("visitor1")
+	public Role newVisitor() {
+		return new Role(ERole.ROLE_VISITOR);
+	}
 
 }
