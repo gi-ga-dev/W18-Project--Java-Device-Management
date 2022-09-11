@@ -78,5 +78,9 @@ public class User {
 		roles.add(role);
 	}
 	
+	public void addDevice(Device device) {
+		devices.add(device);
+	}
+	
 	
 }
