@@ -18,7 +18,6 @@ public class UserConfiguration {
 		User user1 = new User("gigadev", "Gianluke Gallons", "123vattelapesca");
 		// aggiungi ruolo alla lista di ruoli dell'utente
 		// il ruolo viene attribuito alla creazione dell'utente
-		// quindi se l'utente avra' nella lista di ruoli empl e/o admin potra' prendere devices
 		user1.addRole(adminRole);
 		System.out.println("_____________" + user1.getRoles());
 		return user1;

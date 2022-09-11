@@ -23,18 +23,19 @@ public class DeviceRunner implements ApplicationRunner {
 	UserService userServ;
 		
 	@Autowired @Qualifier("user1") User user1;
-	@Autowired @Qualifier("device1") Device dev1;
+	@Autowired @Qualifier("device1") DeviceDto dev1;
 	
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
 		log.info("--> Application Started Successfully!!!");
 		
 		// salvare nel db oggetto istanziato con ruolo Admin
-		userServ.create(user1);
+		userServ.create(user1);		
 		
 		// salvare nel db oggetto device assegnato ad utente
-		deviceServ.create(deviceServ.assignDevice(dev1, user1));
-
+		deviceServ.create(dev1);
+		
+		deviceServ.assignDevice((long) 2, user1);
 		
 	}
 

@@ -8,8 +8,8 @@ import lombok.extern.slf4j.Slf4j;
 public class DeviceConfiguration {
 				
 	@Bean("device1")	
-	public Device newDevice() {
-		Device device1 = new Device(DeviceType.LAPTOP, DeviceStatus.AVAILABLE);				
+	public DeviceDto newDevice() {
+		DeviceDto device1 = new DeviceDto(DeviceType.LAPTOP, DeviceStatus.AVAILABLE);				
 		return device1;
 	}	
 	

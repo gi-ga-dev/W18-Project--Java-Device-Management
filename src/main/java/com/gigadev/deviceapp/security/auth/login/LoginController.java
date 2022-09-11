@@ -54,7 +54,6 @@ public class LoginController {
 				userDetails.getUsername(),
 				roles
 			);
-		
 		return ResponseEntity.ok(jwtresp);
 		
 	}

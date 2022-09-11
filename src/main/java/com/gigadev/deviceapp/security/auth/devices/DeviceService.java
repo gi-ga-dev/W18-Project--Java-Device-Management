@@ -2,6 +2,8 @@ package com.gigadev.deviceapp.security.auth.devices;
 
 import java.util.List;
 import javax.persistence.EntityNotFoundException;
+
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -27,10 +29,12 @@ public class DeviceService {
 	private DeviceRepository deviceRepo;
 
 	// ritorna device con utente assegnato
-	public Device assignDevice(Device device, User user) {
+	public Device assignDevice(Long id, User user) {
+		Device device = read(id);		
 		device.setUser(user);
 		device.setDeviceStatus(DeviceStatus.ASSIGNED);
 		user.addDevice(device);
+		update(device);
 		System.out.println("______________" + user.getDevices().size());
 		return device;
 	}
@@ -42,14 +46,12 @@ public class DeviceService {
 			return (List<Device>) deviceRepo.findAll();
 	}
 
-	public Device create(Device device) {
-
+	public Device create(DeviceDto dto) {		
 		// creo oggetto vuoto e gli copio le proprieta' della classe dto (custom)
-//		Device dev1 = new Device();
-//		BeanUtils.copyProperties(device, dev1);
-		return deviceRepo.save(device);
-//		return dev1;
-
+		Device dev1 = new Device();
+		BeanUtils.copyProperties(dto, dev1);
+		deviceRepo.save(dev1);		
+		return dev1;
 	}
 
 	public Device read(Long id) {

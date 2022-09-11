@@ -56,7 +56,6 @@ public class User {
 	@Size(max = 120)
 	private String password;
 	
-	// i device salvati nella collection dell'utente verranno salvati a loro volta (PERSIST) 
 	// nella colonna user_id del table devices (@JoinColumn)
 	@OneToMany
 	@JoinColumn(name = "user_id")

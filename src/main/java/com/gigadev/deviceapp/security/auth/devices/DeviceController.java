@@ -28,8 +28,8 @@ public class DeviceController {
 	@PostMapping
 	@PreAuthorize("hasRole('ADMIN')")
 	// parametro da salvare nel dto
-	public ResponseEntity<Device> create(@RequestBody Device device) {
-		return ResponseEntity.ok(deviceService.create(device));
+	public ResponseEntity<Device> create(@RequestBody DeviceDto dto) {
+		return ResponseEntity.ok(deviceService.create(dto));
 	}
 	
 	@GetMapping("/{id}")

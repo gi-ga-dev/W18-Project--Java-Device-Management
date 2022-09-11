@@ -17,7 +17,6 @@ public class UserDetailsImpl  implements UserDetails{
 
 	private String username;
 
-
 	@JsonIgnore
 	private String password;
 
@@ -28,9 +27,7 @@ public class UserDetailsImpl  implements UserDetails{
 		this.id = id;
 		this.username = username;
 		this.password = password;
-		this.authorities = authorities;
-		
-		
+		this.authorities = authorities;		
 	}
 
 	public static UserDetailsImpl build(User user) {
@@ -38,7 +35,6 @@ public class UserDetailsImpl  implements UserDetails{
 		List<GrantedAuthority> authorities = user.getRoles().stream()
 				.map(role -> new SimpleGrantedAuthority(role.getRoleName().name()))
 				.collect(Collectors.toList());
-
 	
 		return new UserDetailsImpl(
 				user.getId(), 
