@@ -51,13 +51,11 @@ public class User {
 	
 	@OneToMany(cascade = CascadeType.PERSIST)
 	@JoinColumn(name = "user_id")
-	private List<Device> deviceList = new ArrayList<>();
+	private List<Device> devices = new ArrayList<>();
 
-	@ManyToMany(fetch = FetchType.EAGER)
+	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
 	@JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private Set<Role> roles = new HashSet<Role>();
-	
-	private Role role;
 
 	public User(@NotBlank @Size(max = 20) String username, @Size(max = 30) String fullName,
 			@NotBlank @Size(max = 120) String password) {
@@ -65,11 +63,14 @@ public class User {
 		this.username = username;
 		this.fullName = fullName;
 		this.password = password;
-		//this.role = role;
 	}	
 	
 	public void addDevice(Device device) {
-		deviceList.add(device);
+		devices.add(device);
+	}
+	
+	public void addRole(Role role) {
+		roles.add(role);
 	}
 
 }

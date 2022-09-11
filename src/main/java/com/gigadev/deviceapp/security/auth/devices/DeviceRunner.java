@@ -4,6 +4,8 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
+import com.gigadev.deviceapp.security.auth.roles.RoleConfiguration;
+import com.gigadev.deviceapp.security.auth.roles.RoleService;
 import com.gigadev.deviceapp.security.auth.users.UserConfiguration;
 import com.gigadev.deviceapp.security.auth.users.UserService;
 
@@ -20,6 +22,9 @@ public class DeviceRunner implements ApplicationRunner {
 	
 	UserConfiguration userConfig;
 	UserService userServ;
+	
+	RoleConfiguration roleConfig;
+	RoleService roleServ;
 	
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
