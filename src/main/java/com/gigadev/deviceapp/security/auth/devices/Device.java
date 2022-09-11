@@ -1,12 +1,10 @@
-package com.gigadev.deviceapp.security.auth.roles;
+package com.gigadev.deviceapp.security.auth.devices;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.gigadev.deviceapp.security.auth.users.User;
@@ -17,23 +15,27 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Builder
+@Table(name = "devices")
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
-@Table(name="roles")
-public class Role {
+@Builder
+public class Device {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Long id;
-
-	@Enumerated(EnumType.STRING)
-	@Column(length = 20)
-	private ERole roleName;
 	
-	public Role(ERole roleName) {
+	DeviceType deviceType;
+	DeviceStatus deviceStatus;
+	
+	@ManyToOne
+	private User user;
+
+	public Device(DeviceType deviceType, DeviceStatus deviceStatus) {
 		super();
-		this.roleName = roleName;
+		this.deviceType = deviceType;
+		this.deviceStatus = deviceStatus;
 	}
+	
 	
 }

@@ -1,4 +1,4 @@
-package com.gigadev.deviceapp.models;
+package com.gigadev.deviceapp.security.auth.devices;
 
 public enum DeviceType {
 	SMARTPHONE,
