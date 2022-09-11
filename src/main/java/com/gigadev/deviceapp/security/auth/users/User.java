@@ -56,6 +56,8 @@ public class User {
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private Set<Role> roles = new HashSet<Role>();
+	
+	private Role role;
 
 	public User(@NotBlank @Size(max = 20) String username, @Size(max = 30) String fullName,
 			@NotBlank @Size(max = 120) String password) {
@@ -63,6 +65,7 @@ public class User {
 		this.username = username;
 		this.fullName = fullName;
 		this.password = password;
+		//this.role = role;
 	}	
 	
 	public void addDevice(Device device) {

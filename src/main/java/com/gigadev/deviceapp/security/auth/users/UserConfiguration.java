@@ -18,14 +18,14 @@ import com.gigadev.deviceapp.security.auth.roles.Role;
 public class UserConfiguration {
 	
 	private Role adminRole = new Role(ERole.ROLE_ADMIN);
-	private Set<Role> roles = new HashSet<>();
+	private Role emplRole = new Role(ERole.ROLE_EMPLOYEE);
 	
 	//@Autowired @Qualifier("device1") DeviceDto device1;
 	
 	@Bean("user1")
 	public User newUser() {
 		User user1 = new User("gigadev", "Gianluke Gallons", "123vattelapesca");
-		//roles.add(adminRole);
+		
 		//user1.setRoles(roles);
 		
 		// aggiungere controllo-->solo se l'utente e' admin aggiungi
