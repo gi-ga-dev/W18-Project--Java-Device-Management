@@ -24,12 +24,9 @@ public class UserConfiguration {
 	@Bean("user1")
 	public User newUser() {
 		User user1 = new User("gigadev", "Gianluke Gallons", "123vattelapesca");
+		// aggiungi ruolo alla lista di ruoli dell'utente
 		user1.addRole(emplRole);
-		//roles.add(emplRole);
-		//user1.setRoles(roles);
-		
-		// aggiungere controllo-->solo se l'utente e' admin aggiungi
-		//user1.addDevice(device1);
+		user1.addRole(adminRole);
 		
 		return user1;
 	}

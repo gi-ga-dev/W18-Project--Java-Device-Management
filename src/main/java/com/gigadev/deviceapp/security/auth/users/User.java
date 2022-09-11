@@ -17,7 +17,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
-
 import com.gigadev.deviceapp.security.auth.devices.Device;
 import com.gigadev.deviceapp.security.auth.devices.DeviceDto;
 import com.gigadev.deviceapp.security.auth.roles.Role;
@@ -49,11 +48,14 @@ public class User {
 	@Size(max = 120)
 	private String password;
 	
+	// i device salvati nella collection dell'utente verranno salvati a loro volta (PERSIST) 
+	// nella colonna user_id del table devices (@JoinColumn)
 	@OneToMany(cascade = CascadeType.PERSIST)
 	@JoinColumn(name = "user_id")
 	private List<Device> devices = new ArrayList<>();
 
 	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+	// il table user_roles deve contenere i dati associati di user_id e role_id
 	@JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private Set<Role> roles = new HashSet<Role>();
 

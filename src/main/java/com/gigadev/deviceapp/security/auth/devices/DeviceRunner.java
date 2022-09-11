@@ -28,7 +28,7 @@ public class DeviceRunner implements ApplicationRunner {
 	
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
-		log.info("Application Started Successfully!!!");
+		log.info("--> Application Started Successfully!!!");
 		
 		userServ.create(userConfig.newUser());
 		deviceServ.create(deviceConfig.newDevice());
