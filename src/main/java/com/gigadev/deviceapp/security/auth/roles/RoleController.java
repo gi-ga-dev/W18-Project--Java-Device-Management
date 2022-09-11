@@ -1,6 +1,8 @@
 package com.gigadev.deviceapp.security.auth.roles;
 
 import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -16,7 +18,7 @@ import io.swagger.v3.oas.annotations.parameters.RequestBody;
 @RequestMapping("/roles")
 public class RoleController {
 	
-	RoleService roleServ;
+	@Autowired RoleService roleServ;
 	
 	@GetMapping
 	@PreAuthorize("hasRole('EMPLOYEE')")

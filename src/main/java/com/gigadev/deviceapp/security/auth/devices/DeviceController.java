@@ -1,6 +1,8 @@
 package com.gigadev.deviceapp.security.auth.devices;
 
 import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -17,7 +19,7 @@ import io.swagger.v3.oas.annotations.parameters.RequestBody;
 @RequestMapping("/devices")
 public class DeviceController {
 	
-	DeviceService deviceService;
+	@Autowired DeviceService deviceService;
 	
 	@GetMapping
 	@PreAuthorize("hasRole('EMPLOYEE')")
